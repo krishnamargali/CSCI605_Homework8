@@ -1,5 +1,7 @@
 package question_two;
 
+import question_two.Address.Address;
+import question_two.Address.StorageAddressImpl;
 import question_two.Human.Human;
 import question_two.Human.HumanStorageImpl;
 import question_two.Integer.StorageIntegerImpl;
@@ -8,6 +10,7 @@ import question_two.MusicLP.StorageMusicImpl;
 import question_two.String.StorageStringImpl;
 
 import java.sql.Date;
+import java.util.Scanner;
 
 public class Test {
 
@@ -66,19 +69,91 @@ public class Test {
         return humans;
     }
 
-    public static void main(String[] args) {
+    private static Address[] generateAddressObjects() {
+        Address[] addresses = new Address[5];
+        Address address1 = new Address(1, "State Street", "Chicage", "IL", 60601);
+        Address address2 = new Address(2, "College Street", "Beloit", "WI", 53511);
+        Address address4 = new Address(4, "Massachusetts Avenue", "Boston", "MA", 10209);
+        int counter = 0;
+        addresses[counter++] = address1;
+        addresses[counter++] = address2;
+        addresses[counter++] = null;
+        addresses[counter++] = address4;
+        addresses[counter++] = null;
+        return addresses;
+    }
+
+    private static int getUserChoice () {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("What types of object do you want to test? Enter -1 to quit.");
+        System.out.println("1. Strings ");
+        System.out.println("2. Integers ");
+        System.out.println("3. MusicLPs ");
+        System.out.println("4. Human ");
+        System.out.println("5. Address ");
+        return Integer.parseInt(sc.nextLine());
+    }
+
+    private static void handleStringCases() {
         String[] strings = { "3", "4", "3", null, "10", "Hello", "Java", "Minh Le ABC"};
-        Integer[] integers = {1,3,2,null,-1,0};
         StorageInterface<String> storageString = new StorageStringImpl();
+        testStorage(strings, storageString);
+    }
+
+    private static void handleIntegerCase() {
+        Integer[] integers = {1,3,2,null,-1,0};
         StorageInterface<Integer> storageInteger = new StorageIntegerImpl();
-        MusicLP[] musicLPS = generateMusicLPObjects();
-        StorageInterface<MusicLP> storageMusic = new StorageMusicImpl();
+        testStorage(integers, storageInteger);
+    }
+
+    private static void handleAddressCase() {
+        Address[] addresses = generateAddressObjects();
+        StorageInterface<Address> storageAddress = new StorageAddressImpl();
+        testStorage(addresses, storageAddress);
+    }
+
+    private static void handleHumanCase() {
         Human[] humans = generateHumanObjects();
         StorageInterface<Human> storageHuman = new HumanStorageImpl();
-//        testStorage(strings, storageString);
-//        testStorage(integers, storageInteger);
-//        testStorage(musicLPS, storageMusic);
         testStorage(humans, storageHuman);
+    }
 
+    private static void handleMusicCase() {
+        MusicLP[] musicLPS = generateMusicLPObjects();
+        StorageInterface<MusicLP> storageMusic = new StorageMusicImpl();
+        testStorage(musicLPS, storageMusic);
+    }
+
+    public static void main(String[] args) {
+        while (true) {
+            try {
+                int userChoice = getUserChoice();
+                if (userChoice == -1) {
+                    System.out.println("Program Ending......");
+                    break;
+                }
+                else if (userChoice == 1) {
+                    handleStringCases();
+                }
+                else if (userChoice == 2) {
+                    handleIntegerCase();
+                }
+                else if (userChoice == 3) {
+                    handleMusicCase();
+                }
+                else if (userChoice == 4) {
+                    handleHumanCase();
+                }
+                else if (userChoice == 5) {
+                    handleAddressCase();
+                }
+                else {
+                    System.out.println("Invalid choice");
+                }
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Invalid number format. Please enter a number");
+            }
+        }
     }
 }

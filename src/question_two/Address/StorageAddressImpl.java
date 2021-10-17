@@ -1,13 +1,13 @@
-package question_two.Human;
+package question_two.Address;
 
 import question_two.Node;
 
-public class HumanStorageImpl implements StorageHumanInterface {
-    Node<Human> root;
+public class StorageAddressImpl implements StorageAddressInterface {
+    Node<Address> root;
     int numberOfNullsAdded = 0;
 
     @Override
-    public boolean add(Human x) {
+    public boolean add(Address x) {
         if (x == null) {
             numberOfNullsAdded++;
             return true;
@@ -16,7 +16,7 @@ public class HumanStorageImpl implements StorageHumanInterface {
         return true;
     }
 
-    private Node<Human> addR(Node<Human> root, Human key) {
+    private Node<Address> addR(Node<Address> root, Address key) {
         if (root == null) {
             root = new Node<>(key);
             return root;
@@ -30,14 +30,14 @@ public class HumanStorageImpl implements StorageHumanInterface {
     }
 
     @Override
-    public boolean find(Human x) {
+    public boolean find(Address x) {
         if (x == null) {
             return this.numberOfNullsAdded > 0;
         }
         return findR(root, x);
     }
 
-    private boolean findR(Node<Human> currentNode, Human key) {
+    private boolean findR(Node<Address> currentNode, Address key) {
         if (currentNode == null) {
             return false;
         }
@@ -56,7 +56,7 @@ public class HumanStorageImpl implements StorageHumanInterface {
     }
 
     @Override
-    public boolean delete(Human x) {
+    public boolean delete(Address x) {
         if (x == null) {
             if (numberOfNullsAdded == 0) {
                 return false;
@@ -73,7 +73,7 @@ public class HumanStorageImpl implements StorageHumanInterface {
         return false;
     }
 
-    private Node<Human> deleteR(Node<Human> currentNode, Human key) {
+    private Node<Address> deleteR(Node<Address> currentNode, Address key) {
         if (currentNode == null) {
             return null;
         }
@@ -87,7 +87,7 @@ public class HumanStorageImpl implements StorageHumanInterface {
             if (currentNode.right == null) {
                 return currentNode.left;
             }
-            Human smallestValue = findSmallestValue(currentNode.right);
+            Address smallestValue = findSmallestValue(currentNode.right);
             currentNode.key = smallestValue;
             currentNode.right = deleteR(currentNode.right, smallestValue);
             return currentNode;
@@ -107,7 +107,7 @@ public class HumanStorageImpl implements StorageHumanInterface {
      * @param root currentNode
      * @return the value of the node with smallest value
      */
-    private Human findSmallestValue(Node<Human> root) {
+    private Address findSmallestValue(Node<Address> root) {
         if (root.left == null) {
             return root.key;
         }
