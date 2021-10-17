@@ -32,6 +32,9 @@ public class StorageStringImpl implements StorageStringInterface {
 
     @Override
     public boolean find(String x) {
+        if (x == null) {
+            return this.numberOfNullsAdded > 0;
+        }
         return findR(root, x);
     }
 
@@ -55,6 +58,15 @@ public class StorageStringImpl implements StorageStringInterface {
 
     @Override
     public boolean delete(String x) {
+        if (x == null) {
+            if (numberOfNullsAdded == 0) {
+                return false;
+            }
+            else {
+                numberOfNullsAdded--;
+                return true;
+            }
+        }
         if (find(x)) {
             root = deleteR(root, x);
             return true;
