@@ -1,9 +1,13 @@
 package question_two;
 
+import question_two.Human.Human;
+import question_two.Human.HumanStorageImpl;
 import question_two.Integer.StorageIntegerImpl;
 import question_two.MusicLP.MusicLP;
 import question_two.MusicLP.StorageMusicImpl;
 import question_two.String.StorageStringImpl;
+
+import java.sql.Date;
 
 public class Test {
 
@@ -48,7 +52,18 @@ public class Test {
         musicLPS[counter++] = musicLP4;
         musicLPS[counter++] = musicLP5;
         return musicLPS;
+    }
 
+    private static Human[] generateHumanObjects() {
+        Human[] humans = new Human[4];
+        Human human1 = new Human(Date.valueOf("1997-01-05"), "Minh", "1");
+        Human human4 = new Human(Date.valueOf("1998-10-30"), "Andy", "2");
+        int counter = 0;
+        humans[counter++] = human1;
+        humans[counter++] = null;
+        humans[counter++] = null;
+        humans[counter++] = human4;
+        return humans;
     }
 
     public static void main(String[] args) {
@@ -58,9 +73,12 @@ public class Test {
         StorageInterface<Integer> storageInteger = new StorageIntegerImpl();
         MusicLP[] musicLPS = generateMusicLPObjects();
         StorageInterface<MusicLP> storageMusic = new StorageMusicImpl();
-        testStorage(strings, storageString);
-        testStorage(integers, storageInteger);
-        testStorage(musicLPS, storageMusic);
+        Human[] humans = generateHumanObjects();
+        StorageInterface<Human> storageHuman = new HumanStorageImpl();
+//        testStorage(strings, storageString);
+//        testStorage(integers, storageInteger);
+//        testStorage(musicLPS, storageMusic);
+        testStorage(humans, storageHuman);
 
     }
 }

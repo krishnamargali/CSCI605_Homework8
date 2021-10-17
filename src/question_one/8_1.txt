@@ -30,9 +30,9 @@ for the object u of type U and array list "listOfIntegerThinges" is given as a p
 
 - Another Arraylist listOfStrings is initialised with generic class Thing of type Strings.
 
--The method insertThing is called in the Inteference class where the string "b" is passed as parameter for object reference u of type U and listOfStrings with size =0.
+-The method insertThing is called in the Interference class where the string "b" is passed as parameter for object reference u of type U and listOfStrings with size =0.
 
-- In the method inserThing() a new object thing is created with type String and the value u= "b" is set to aType in the set method of the generic class Thing.
+- In the method insertThing() a new object thing is created with type String and the value u= "b" is set to aType in the set method of the generic class Thing.
 
 - Now the aType is updated to "b" and the things.add(thing) size is 1
 
