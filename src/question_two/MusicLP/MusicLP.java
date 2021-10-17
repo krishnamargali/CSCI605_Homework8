@@ -1,6 +1,6 @@
 package question_two.MusicLP;
 
-public class MusicLP {
+public class MusicLP implements Comparable<MusicLP> {
     int year;
     String artist;
     String title;
@@ -15,6 +15,7 @@ public class MusicLP {
         this.tracks = tracks;
     }
 
+    @Override
     public int compareTo(MusicLP anotherMusicLP) {
         return compare(this.length, anotherMusicLP.length);
     }

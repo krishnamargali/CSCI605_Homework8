@@ -101,7 +101,7 @@ public class Test {
     }
 
     private static void handleIntegerCase() {
-        Integer[] integers = {1,3,2,null,-1,0};
+        Integer[] integers = {1,3,2,null,3,0};
         StorageInterface<Integer> storageInteger = new StorageIntegerImpl();
         testStorage(integers, storageInteger);
     }

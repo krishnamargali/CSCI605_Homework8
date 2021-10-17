@@ -2,7 +2,7 @@ package question_two.Human;
 
 import java.sql.Date;
 
-public class Human {
+public class Human implements Comparable<Human> {
     Date dateOfBirth;
     String firstName;
     String userId;
@@ -13,6 +13,7 @@ public class Human {
         this.userId = userId;
     }
 
+    @Override
     public int compareTo(Human anotherHuman) {
         return this.dateOfBirth.compareTo(anotherHuman.dateOfBirth);
     }

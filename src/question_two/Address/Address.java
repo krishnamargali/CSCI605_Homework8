@@ -1,6 +1,6 @@
 package question_two.Address;
 
-public class Address {
+public class Address implements Comparable<Address> {
     int houseNumber;
     String streetName;
     String nameOfTown;
@@ -15,6 +15,7 @@ public class Address {
         this.zipCode = zipCode;
     }
 
+    @Override
     public int compareTo(Address anotherAddress) {
         return this.streetName.compareTo(anotherAddress.streetName);
     }
