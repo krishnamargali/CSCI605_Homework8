@@ -32,6 +32,9 @@ public class StorageIntegerImpl implements StorageIntegerInterface {
 
     @Override
     public boolean find(Integer x) {
+        if (x == null) {
+            return this.numberOfNullsAdded > 0;
+        }
         return findR(root, x);
     }
 
