@@ -1,0 +1,48 @@
+Generics 
+
+A class Interference is created. 
+In the main method
+
+- An arraylist "listOIntegerThinges" is initialised with the generic class Thing of type Integers.
+
+- The method insertThing() of class Interference is called where the Integer 10 
+for the object u of type U and array list "listOfIntegerThinges" is given as a parameter.
+
+- Now the compiler goes to the insertThing() method of Interference class. A new generic object "thing" of type Integer is created.
+
+- The set() method of the generic class Thing is called where aType is set to the integer value 10 passed. Now the aType is 10.
+
+- things.add(thing) increments the size of the list things whenever the integer is added to the list. So the size here is 1
+
+- Again the method insertThing is called and now the parameter 20 and "listOfIntegerThinges" is given as a parameter.
+
+- The method is called by creating another thing object and set method is called. The aType previously was 10 now the integer value passed, aType now updates to 20. 
+
+-things.add(thing) increments the size of the list things whenever the integer is added to the list. Now another value is added so the size is incremented to 2.
+
+- The above process is repeated as another value 30 is passed as a parameter to the insertThing method. Then the aType is updated to 30.
+
+-Interference.outputThinges(listOfIntegerThinges) -- Here it goes to the method in the interference class.
+---- The counter=0 is initialised
+---- for each thing in the list things of size 3 ... An object  thingContents of type U is storing the value of aType that is returned from the get() method.
+---- Thing # and the counter for each of the first iteration = and the value in the thingContents is printed.
+
+
+- Another Arraylist listOfStrings is initialised with generic class Thing of type Strings.
+
+-The method insertThing is called in the Inteference class where the string "b" is passed as parameter for object reference u of type U and listOfStrings with size =0.
+
+- In the method inserThing() a new object thing is created with type String and the value u= "b" is set to aType in the set method of the generic class Thing.
+
+- Now the aType is updated to "b" and the things.add(thing) size is 1
+
+- Another string "a" in the insertThing method. aType is updated to "a" and the size is incremented to 2.
+
+- Interference.<String>insertThing(Integer.valueOf(30), listOfStrings);
+This line doesnt compile because the type of the generic class Thing is String, when u are passing the integer value it wont compile because they are different types. (Integer and String).
+
+Output
+
+Thing #0 = 10
+Thing #1 = 20
+Thing #2 = 30
